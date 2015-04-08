@@ -1,2 +1,4 @@
 # youtube-looper
-Web Application for Repeating YoutubeVideos
+Web Application for Repeating Youtube Videos
+
+Sample Information
