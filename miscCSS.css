@@ -15,9 +15,27 @@ iframe
     margin-right: auto;
 }
 
-.navbar-header
+.navbar-brand
 {
-   //
+   position:absolute;
+  -webkit-animation-name: example; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 1.5s; /* Chrome, Safari, Opera */
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-timing-function: ease-out;
+    animation-name: example;
+    animation-duration: 0.5s;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes example {
+    
+    100% {margin-left: 42.5%  ;}
+}
+
+/* Standard syntax */
+@keyframes example {
+   // 0%   {margin-left: 0%}
+    //100% {margin-left: 100%}
 }
 
 .search
