@@ -18,29 +18,20 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Youtube Looper</a>
                 </div>
-                <div>
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Page 1</a></li>
-                        <li><a href="#">Page 2</a></li>
-                        <li><a href="#">Page 3</a></li>
-                    </ul>
+                <div class = "search">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input id="query" type="text" class="form-control" placeholder="Search Video">
+                        </div>
+                        <button id="search" onclick="search()" class="btn btn-default">Search</button>
+                    </form>
+                    <div id="search-container">
+                    </div>
                 </div>
-
             </div>
         </nav>
-        <div>
-            <div id="buttons">
-                <label> <input id="query" value='cats' type="text"/><button id="search-button"  onclick="search()">Search</button></label>
-            </div>
-            <div id="search-container">
-            </div>
-        </div>
         <div class="container">
-            <div class="jumbotron">
-                <h1>My First Bootstrap Page</h1>
-                <p>Resize this responsive page to see the effect!</p> 
-            </div>
+
 
             <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
             <div id="player"></div>
@@ -60,7 +51,7 @@
                     player = new YT.Player('player', {
                         height: '390',
                         width: '640',
-                        videoId: 'M7lc1UVf-VE',
+                        videoId: 'dVDk7PXNXB8',
                         //Next 4 lines dictate functions
                         events: {
                             //'onReady': onPlayerReady,
@@ -83,13 +74,20 @@
                         setTimeout(function() {
                             event.target.playVideo()
                         }, 2000);
-                        
+
                     }
                 }
                 function stopVideo() {
                     player.stopVideo();
                 }
             </script>
+
+
+            <div class="jumbotron">
+                <h1>Youtube Looper</h1>
+                <p>Resize this responsive page to see the effect!</p> 
+            </div>
+
             <div class="row">
                 <div class="col-sm-4">
                     <h3>Column 1</h3>

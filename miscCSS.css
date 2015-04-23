@@ -17,7 +17,10 @@ iframe
 
 .navbar-header
 {
+   //
 }
 
+.search
 {
+   float: right;
 }
