@@ -24,21 +24,33 @@ iframe
     -webkit-animation-timing-function: ease-out;
     animation-name: example;
     animation-duration: 0.5s;
+    
 }
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes example {
-    
-    100% {margin-left: 42.5%  ;}
+    0%{margin-left: 42.5%  ;}
+    100% {margin-left: 0%  ;}
 }
 
 /* Standard syntax */
 @keyframes example {
-   // 0%   {margin-left: 0%}
-    //100% {margin-left: 100%}
+   0%{margin-left: 42.5%  ;}
+    100% {margin-left: 0%  ;}
 }
 
 .search
 {
    float: right;
 }
+
+.noselect {
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
