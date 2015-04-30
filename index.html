@@ -19,7 +19,7 @@
                     <p class="navbar-brand noselect" >Youtube Looper</p>
                 </div>
                 <div class = "search-container">
-                    <form class="navbar-form navbar-left" role="search">
+                    <form class="navbar-form navbar-left" role="search" onsubmit="return false">
                         <div class="form-group">
                             <input id="query" type="text" class="form-control" placeholder="Search Video" onkeydown="Javascript: if (event.keyCode==13) getResults();">
                         </div>
@@ -114,7 +114,7 @@
 function getResults(){
 	var searchQry = document.getElementById('query').value;
 	var xmlhttp = new XMLHttpRequest();
-	var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + searchQry + "&type=channel&maxResults=50&key=AIzaSyAMSSn3676V6m7-hX5nAI3Lff7sZKyJH0A";
+	var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + searchQry + "&type=video&maxResults=50&key=AIzaSyAMSSn3676V6m7-hX5nAI3Lff7sZKyJH0A";
 	xmlhttp.onreadystatechange = function() {
 	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 	        var myArr = JSON.parse(xmlhttp.responseText);
@@ -128,11 +128,11 @@ function getResults(){
 		// var i;
 		for(i = 0; i < arr.items.length; i++) {
 			var channel = {
-				id : arr.items[i].id.channelId,
-				gdata : "http://gdata.youtube.com/feeds/api/users/" + arr.items[i].id.channelId + "?alt=json",
-				link : "https://www.youtube.com/channel/" + arr.items[i].id.channelId,
+				id : arr.items[i].id.videoId,
+				gdata : "http://gdata.youtube.com/feeds/api/users/" + arr.items[i].id.videoId + "?alt=json",
+				link : "https://www.youtube.com/watch?v=" + arr.items[i].id.videoId,
 				title : arr.items[i].snippet.thumbnails.default.url,
-				subscribers : 0
+				
 			}
 			
 			channels.push(channel);
