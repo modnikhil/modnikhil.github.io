@@ -18,15 +18,13 @@
                 <div class="navbar-header" >
                     <p class="navbar-brand noselect" >Youtube Looper</p>
                 </div>
-                <div class = "search">
+                <div class = "search-container">
                     <form class="navbar-form navbar-left" role="search">
                         <div class="form-group">
-                            <input id="query" type="text" class="form-control" placeholder="Search Video">
+                            <input id="query" type="text" class="form-control" placeholder="Search Video" onkeydown="Javascript: if (event.keyCode==13) getResults();">
                         </div>
-                        <button id="search" onclick="search()" class="btn btn-default">Search</button>
+                        <input type = "button" class="btn btn-default" id="search" onclick="getResults();" value= "Search" >
                     </form>
-                    <div id="search-container">
-                    </div>
                 </div>
             </div>
         </nav>
@@ -106,6 +104,52 @@
                     <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
                 </div>
             </div>
+	<!-- <input type="button" value="test" onClick="addStatsFor(channels);"> -->
+
+	<div id="results" style="margin-top:40px;"></div>
+
+
+<script type="text/javascript">
+	
+function getResults(){
+	var searchQry = document.getElementById('query').value;
+	var xmlhttp = new XMLHttpRequest();
+	var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + searchQry + "&type=channel&maxResults=50&key=AIzaSyAMSSn3676V6m7-hX5nAI3Lff7sZKyJH0A";
+	xmlhttp.onreadystatechange = function() {
+	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+	        var myArr = JSON.parse(xmlhttp.responseText);
+	        gatherChannels(myArr);
+	        displayChannels(channels);
+	    }
+	}
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
+	function gatherChannels(arr) {
+		// var i;
+		for(i = 0; i < arr.items.length; i++) {
+			var channel = {
+				id : arr.items[i].id.channelId,
+				gdata : "http://gdata.youtube.com/feeds/api/users/" + arr.items[i].id.channelId + "?alt=json",
+				link : "https://www.youtube.com/channel/" + arr.items[i].id.channelId,
+				title : arr.items[i].snippet.thumbnails.default.url,
+				subscribers : 0
+			}
+			
+			channels.push(channel);
+		}
+	}
+	function displayChannels(arr) {
+	    var out = "";
+	    // var i;
+	    for(i = 0; i < arr.length; i++) {
+	        out += '<a target="_blank" style="text-decoration:none" href="' + arr[i].link + '"> <img src="' +
+	        arr[i].title + '" heigh="150" width="150" style=padding:10px;></a>';
+	    }
+	    document.getElementById("results").innerHTML = out;
+	}
+}
+var channels = channels || [];
+</script>
         </div>
 
     </body>
