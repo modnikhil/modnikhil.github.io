@@ -6,11 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="http://bootswatch.com/yeti/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="miscCSS.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        <script src="C:\Users\lab111\Documents\GitHub\modnikhil.github.io\auth.js"></script>
-        <script src="C:\Users\lab111\Documents\GitHub\modnikhil.github.io\search.js"></script>
-        <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+        <script async src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script async src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
     </head>
     <body>
         <nav class="navbar navbar-inverse">
@@ -113,23 +110,27 @@
                     }
                     function displayVideos(arr) {
                         var out = "";
-                        // var i;
+                       
                         for (i = 0; i < arr.length; i++) {
-                            out += '<a target="_blank" style="text-decoration:none"  href= "index.html" > <img src="' +
-                                    arr[i].title + '" heigh="150" width="150" style=padding:10px;></a>';
+                            out += '<a target="_parent" style="text-decoration:none" > <img src="' +
+                                    arr[i].title + '" heigh="150" width="150" onclick= "changeVid(\'' + arr[i].id + '\')"  style=padding:10px;></a>';
+                            
                         }
                         document.getElementById("results").innerHTML = out;
                         $('html, body').animate({
                             scrollTop: $("#results").offset().top
                         }, 1000);
                     }
+                    
 
                     // href="' + arr[i].link + '"
                 }
 
                 function changeVid(tempID)
                 {
-                    id = tempID;
+                   
+                        
+                    id = tempID.valueOf();
                     player = new YT.Player('player', {
                         height: '390',
                         width: '640',
